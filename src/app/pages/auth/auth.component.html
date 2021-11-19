@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="title"><span>Member Login</span></div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+      <div class="form-group">
+        <label>User name</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Name"
+          name="taiKhoan"
+          ngModel
+          #TaiKhoan="ngModel"
+          required
+          minlength="7"
+          maxlength="15"
+        />
+        <div
+          class="alert alert-success mt-3"
+          *ngIf="TaiKhoan.errors && (TaiKhoan.dirty || TaiKhoan.touched)"
+        >
+          <div *ngIf="TaiKhoan.errors?.['required']">
+            Tai khoan khong duoc rong
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          class="form-control"
+          type="password"
+          placeholder="Password"
+          name="matKhau"
+          ngModel
+          #MatKhau="ngModel"
+          required
+        />
+      </div>
+      <div class="button-login">
+        <button class="btn text-light text-center w-100">Login</button>
+      </div>
+      <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+    </form>
+  </div>
+</div>
